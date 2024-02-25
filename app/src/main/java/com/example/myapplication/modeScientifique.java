@@ -21,7 +21,11 @@ public class modeScientifique extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mode_scientifique);
-
+        //Récupérer les composants menu
+        drawer = findViewById(R.id.drawerLayout);
+        menu = findViewById(R.id.menu);
+        standard = findViewById(R.id.menuStandard);
+        scientifique = findViewById(R.id.menuScientifique);
 
         //Menu events
         menu.setOnClickListener(new View.OnClickListener() {
