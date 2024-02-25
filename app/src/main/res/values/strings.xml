@@ -8,4 +8,5 @@
     <string name="volume">Volume</string>
     <string name="calcTitle">Calculatrice</string>
     <string name="convertTitle">Convertisseur</string>
+    <string name="progression">En Cours</string>
 </resources>

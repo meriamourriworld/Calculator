@@ -13,17 +13,37 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include layout="@layout/toolbar" />
-
-
-        <TextView
-            android:id="@+id/textView10"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal|center_vertical"
-            android:text="scienttifique" />
+            android:orientation="horizontal">
+
+            <include layout="@layout/toolbar" />
+
+            <TextView
+                android:id="@+id/calcModeSc"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingStart="20dp"
+                android:text="@string/scientifique"
+                android:textSize="34sp" />
+
+        </LinearLayout>
+
+
     </LinearLayout>
 
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="@string/progression"
+        android:textColor="#B1B1B1"
+        android:textSize="48sp"
+        android:textStyle="bold" />
 
     <RelativeLayout
         android:layout_width="300dp"
