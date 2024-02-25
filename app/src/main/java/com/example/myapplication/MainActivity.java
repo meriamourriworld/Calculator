@@ -347,6 +347,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 float pourcent = Float.parseFloat(txtTyping.getText().toString())/100;
                 txtTyping.setText(String.valueOf(pourcent));
+                symbol = true;
             }
         });
 
@@ -357,7 +358,17 @@ public class MainActivity extends AppCompatActivity {
                 {
                     String typedNumber = txtTyping.getText().toString();
                     txtTyping.setText(String.valueOf(1 / Float.parseFloat(typedNumber)));
+                    symbol = true;
                 }
+            }
+        });
+
+        btnRacineCarre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    String typedNumber = txtTyping.getText().toString();
+                    txtTyping.setText(String.valueOf(Math.sqrt(Float.parseFloat(typedNumber))));
+                symbol = true;
             }
         });
 
