@@ -342,6 +342,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnPourcentage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                float pourcent = Float.parseFloat(txtTyping.getText().toString())/100;
+                txtTyping.setText(String.valueOf(pourcent));
+            }
+        });
+
         //Menu events
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
