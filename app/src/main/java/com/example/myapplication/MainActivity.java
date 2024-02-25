@@ -350,6 +350,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnUnSurX.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!txtTyping.getText().toString().equals("0"))
+                {
+                    String typedNumber = txtTyping.getText().toString();
+                    txtTyping.setText(String.valueOf(1 / Float.parseFloat(typedNumber)));
+                }
+            }
+        });
+
         //Menu events
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
