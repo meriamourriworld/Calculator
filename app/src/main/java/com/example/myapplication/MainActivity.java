@@ -368,6 +368,22 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                     String typedNumber = txtTyping.getText().toString();
                     txtTyping.setText(String.valueOf(Math.sqrt(Float.parseFloat(typedNumber))));
+                    symbol = true;
+            }
+        });
+
+        btnCarre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(txtTyping.getText().toString().indexOf(".")==-1)
+                {
+                    int typedNumber = Integer.parseInt(txtTyping.getText().toString());
+                    txtTyping.setText(String.valueOf((int)(Math.pow(typedNumber, 2))));
+                }else
+                {
+                    float typedNumber = Float.parseFloat(txtTyping.getText().toString());
+                    txtTyping.setText(String.valueOf(Math.pow(typedNumber, 2)));
+                }
                 symbol = true;
             }
         });
