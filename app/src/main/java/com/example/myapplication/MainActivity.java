@@ -333,9 +333,12 @@ public class MainActivity extends AppCompatActivity {
         btnPlusMoins.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String typedNumber = txtTyping.getText().toString();
-                typedNumber = (typedNumber.indexOf("-")==-1)? "-"+ txtTyping.getText().toString() : txtTyping.getText().toString().substring(1);
-                txtTyping.setText(typedNumber);
+                if(!txtTyping.getText().toString().equals("0"))
+                {
+                    String typedNumber = txtTyping.getText().toString();
+                    typedNumber = (typedNumber.indexOf("-")==-1)? "-"+ txtTyping.getText().toString() : txtTyping.getText().toString().substring(1);
+                    txtTyping.setText(typedNumber);
+                }
             }
         });
 
