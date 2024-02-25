@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="app_text">My Application</string>
+    <string name="standard">Standard</string>
+    <string name="scientifique">Scientifique</string>
+    <string name="programmeur">Programmeur</string>
+    <string name="devise">Devise</string>
+    <string name="volume">Volume</string>
+    <string name="calcTitle">Calculatrice</string>
+    <string name="convertTitle">Convertisseur</string>
+</resources>
