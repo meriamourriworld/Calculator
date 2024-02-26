@@ -308,26 +308,33 @@ public class MainActivity extends AppCompatActivity {
         btnEgale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                float val2 = Float.parseFloat(txtTyping.getText().toString()), resultat=0;
-               switch (operation)
-               {
-                   case "+": resultat=val + val2; break;
-                   case "-": resultat=val - val2; break;
-                   case "*": resultat=val * val2; break;
-                   case "/": resultat=val / val2; break;
-               }
+                if(operation.equals(""))
+                {
+                    txtOperation.setText(txtTyping.getText().toString() + " =");
+                    txtTyping.setText(txtTyping.getText().toString());
+                }else
+                {
+                    float val2 = Float.parseFloat(txtTyping.getText().toString()), resultat=0;
+                    switch (operation)
+                    {
+                        case "+": resultat=val + val2; break;
+                        case "-": resultat=val - val2; break;
+                        case "*": resultat=val * val2; break;
+                        case "/": resultat=val / val2; break;
+                    }
 
-                if((int)resultat == resultat) {
-                    txtOperation.setText((int)val + " " + operation + " " + (int)val2 + " = " + (int)resultat);
-                    txtTyping.setText((int)resultat+"");
-                    val = (int) resultat;
-                } else {
-                    txtOperation.setText(val + " " + operation + " " + val2 + " = " + resultat);
-                    txtTyping.setText(resultat+"");
-                    val = resultat;
+                    if((int)resultat == resultat) {
+                        txtOperation.setText((int)val + " " + operation + " " + (int)val2 + " = " + (int)resultat);
+                        txtTyping.setText((int)resultat+"");
+                        val = (int) resultat;
+                    } else {
+                        txtOperation.setText(val + " " + operation + " " + val2 + " = " + resultat);
+                        txtTyping.setText(resultat+"");
+                        val = resultat;
+                    }
+                    symbol = true;
+                    equal = true;
                 }
-                symbol = true;
-                equal = true;
             }
         });
 
