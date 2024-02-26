@@ -44,20 +44,45 @@
                 android:id="@+id/txtTemp1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView"
-                android:textSize="40sp" />
+                android:layout_marginStart="20dp"
+                android:text="0"
+                android:textSize="60sp"
+                android:textStyle="normal" />
+
+            <Spinner
+                android:id="@+id/spinTemp1"
+                style="@style/Widget.AppCompat.Spinner.DropDown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:entries="@array/unites"
+                android:padding="10dp"
+                android:spinnerMode="dropdown" />
 
             <TextView
                 android:id="@+id/txtTemp2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView"
-                android:textSize="40sp" />
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:text="0"
+                android:textSize="60sp" />
+
+            <Spinner
+                android:id="@+id/spinTemp2"
+                style="@style/Widget.AppCompat.Spinner.DropDown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:entries="@array/unites"
+                android:padding="10dp" />
 
             <LinearLayout
                 android:id="@+id/kelvinLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -70,7 +95,7 @@
                     android:id="@+id/txtTempKelvin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:layout_marginTop="10dp" />
             </LinearLayout>
         </LinearLayout>
 
@@ -95,14 +120,14 @@
                 <Button
                     android:id="@+id/btnCTemp"
                     android:layout_width="wrap_content"
-                    android:layout_height="77dp"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="3dp"
                     android:layout_marginEnd="3dp"
-                    android:layout_weight="1"
+                    android:layout_weight="0.9"
                     android:backgroundTint="#F6F6F6"
                     android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:text="C"
+                    android:paddingBottom="5dp"
+                    android:text="CE"
                     android:textColor="#6E6E6E"
                     android:textSize="20sp"
                     android:typeface="sans"
@@ -111,10 +136,11 @@
                 <ImageButton
                     android:id="@+id/btnEffacerTemp"
                     android:layout_width="wrap_content"
-                    android:layout_height="80dp"
+                    android:layout_height="75dp"
+                    android:layout_gravity="bottom"
                     android:layout_marginStart="3dp"
                     android:layout_marginEnd="3dp"
-                    android:layout_weight="1.5"
+                    android:layout_weight="1.6"
                     android:autofillHints="Effacer"
                     android:backgroundTint="#F6F6F6"
                     android:contentDescription="Effacer"

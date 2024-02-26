@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="unites">
+        <item name="celsius">Celsius</item>
+        <item name="fahrenheit">Fahrenheit</item>
+        <item name="kelvin">Kelvin</item>
+    </array>
+</resources>
