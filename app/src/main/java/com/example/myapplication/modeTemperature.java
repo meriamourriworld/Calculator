@@ -92,6 +92,26 @@ public class modeTemperature extends AppCompatActivity {
             }
         });
 
+        btnVirguleTemp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String res=  (selectedTxt.getText().toString().indexOf(".") == -1)? (selectedTxt.getText() + ".") : (selectedTxt.getText() + "");
+                selectedTxt.setText(res);
+            }
+        });
+
+        btnPlusMoinsTemp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!selectedTxt.getText().toString().equals("0"))
+                {
+                    String typedNumber = selectedTxt.getText().toString();
+                    typedNumber = (typedNumber.indexOf("-")==-1)? "-"+ selectedTxt.getText().toString() : selectedTxt.getText().toString().substring(1);
+                    selectedTxt.setText(typedNumber);
+                }
+            }
+        });
+
         //Menu events
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
