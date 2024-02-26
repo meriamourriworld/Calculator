@@ -396,6 +396,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnEffacer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String typed = txtTyping.getText().toString();
+                txtTyping.setText(typed.substring(0, typed.length() - 1));
+                if(txtTyping.getText().toString().equals("")) txtTyping.setText("0");
+            }
+        });
+
         //Menu events
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
