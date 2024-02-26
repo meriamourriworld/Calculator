@@ -7,7 +7,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -25,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     String operation="";
     //Menu Declarations
     DrawerLayout drawer;
-    LinearLayout standard, scientifique;
+    LinearLayout standard, scientifique, temperature;
     ImageView menu;
 
 
@@ -36,9 +35,10 @@ public class MainActivity extends AppCompatActivity {
 
         //Récupérer les composants menu
         drawer = findViewById(R.id.drawerLayout);
-        menu = findViewById(R.id.menu);
+        menu = findViewById(R.id.menuDevise);
         standard = findViewById(R.id.menuStandard);
         scientifique = findViewById(R.id.menuScientifique);
+        temperature = findViewById(R.id.menuTemperature);
 
         //Creation of views
         txtOperation = findViewById(R.id.txtOperation);
@@ -417,6 +417,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 redirectActivity(MainActivity.this, modeScientifique.class);
+            }
+        });
+
+        temperature.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                redirectActivity(MainActivity.this, modeTemperature.class);
             }
         });
     }

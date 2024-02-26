@@ -78,7 +78,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/menuProgrammeur"
+        android:id="@+id/menuProgrameur"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -121,7 +121,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/menu"
+        android:id="@+id/menuDevise"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"

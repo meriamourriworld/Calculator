@@ -14,7 +14,7 @@ import android.widget.LinearLayout;
 public class modeScientifique extends AppCompatActivity {
 
     DrawerLayout drawer;
-    LinearLayout standard, scientifique;
+    LinearLayout standard, scientifique, temperature;
     ImageView menu;
 
     @Override
@@ -23,9 +23,10 @@ public class modeScientifique extends AppCompatActivity {
         setContentView(R.layout.activity_mode_scientifique);
         //Récupérer les composants menu
         drawer = findViewById(R.id.drawerLayout);
-        menu = findViewById(R.id.menu);
+        menu = findViewById(R.id.menuDevise);
         standard = findViewById(R.id.menuStandard);
         scientifique = findViewById(R.id.menuScientifique);
+        temperature = findViewById(R.id.menuTemperature);
 
         //Menu events
         menu.setOnClickListener(new View.OnClickListener() {
@@ -44,6 +45,13 @@ public class modeScientifique extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 recreate();
+            }
+        });
+
+        temperature.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                redirectActivity(modeScientifique.this, modeTemperature.class);
             }
         });
     }
