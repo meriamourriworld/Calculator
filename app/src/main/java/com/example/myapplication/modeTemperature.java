@@ -25,6 +25,8 @@ public class modeTemperature extends AppCompatActivity {
     String selectedUnit1, getSelectedUnit2;
     Spinner spinTemp1, spinTemp2;
     Button btnCeTemp, btnPlusMoinsTemp, btnVirguleTemp, btn0Temp, btn1Temp,btn2Temp, btn3Temp, btn4Temp, btn5Temp, btn6Temp, btn7Temp, btn8Temp, btn9Temp;
+    String nb;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,6 +110,121 @@ public class modeTemperature extends AppCompatActivity {
                     String typedNumber = selectedTxt.getText().toString();
                     typedNumber = (typedNumber.indexOf("-")==-1)? "-"+ selectedTxt.getText().toString() : selectedTxt.getText().toString().substring(1);
                     selectedTxt.setText(typedNumber);
+                }
+            }
+        });
+
+        btn0Temp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(selectedTxt != null)
+                {
+                    if(selectedTxt.getText().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1){
+                        nb = "0";
+                    }else{
+                        nb =selectedTxt.getText()+"0";
+                    }
+                    selectedTxt.setText(nb);
+                }
+            }
+        });
+
+        btn1Temp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(selectedTxt != null)
+                {
+                    nb = (selectedTxt.getText().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1)? "1" : selectedTxt.getText()+"1";
+                    selectedTxt.setText(nb);
+                }
+
+            }
+        });
+
+        btn2Temp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(selectedTxt != null)
+                {
+                    nb = (selectedTxt.getText().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1)? "2" : selectedTxt.getText()+"2";
+                    selectedTxt.setText(nb);
+                }
+            }
+        });
+
+        btn3Temp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(selectedTxt != null)
+                {
+                    nb = (selectedTxt.getText().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1)? "3" : selectedTxt.getText()+"3";
+                    selectedTxt.setText(nb);
+                }
+            }
+        });
+
+        btn4Temp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(selectedTxt != null)
+                {
+                    nb = (selectedTxt.getText().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1)? "4" : selectedTxt.getText()+"4";
+                    selectedTxt.setText(nb);
+                }
+            }
+        });
+
+        btn5Temp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(selectedTxt != null)
+                {
+                    nb = (selectedTxt.getText().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1)? "5" : selectedTxt.getText()+"5";
+                    selectedTxt.setText(nb);
+                }
+            }
+        });
+
+        btn6Temp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(selectedTxt != null)
+                {
+                    nb = (selectedTxt.getText().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1)? "6" : selectedTxt.getText()+"6";
+                    selectedTxt.setText(nb);
+                }
+            }
+        });
+
+        btn7Temp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(selectedTxt != null)
+                {
+                    nb = (selectedTxt.getText().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1)? "7" : selectedTxt.getText()+"7";
+                    selectedTxt.setText(nb);
+                }
+            }
+        });
+
+        btn8Temp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(selectedTxt != null)
+                {
+                    nb = (selectedTxt.getText().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1) ? "8" : selectedTxt.getText() + "8";
+                    selectedTxt.setText(nb);
+                }
+            }
+        });
+
+        btn9Temp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(selectedTxt != null)
+                {
+                    nb = (selectedTxt.getText().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1) ? "9" : selectedTxt.getText() + "9";
+                    selectedTxt.setText(nb);
                 }
             }
         });
