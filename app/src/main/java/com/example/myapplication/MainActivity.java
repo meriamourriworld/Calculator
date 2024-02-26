@@ -224,7 +224,7 @@ public class MainActivity extends AppCompatActivity {
                     switch(operation)
                     {
                         case "+": val += Float.parseFloat(txtTyping.getText().toString()); break;
-                        case "-": val -= Float.parseFloat(txtTyping.getText().toString()); break;
+                        case "-": val = Float.parseFloat(txtTyping.getText().toString()) - val; break;
                         case "*": val *= Float.parseFloat(txtTyping.getText().toString()); break;
                         case "/": val /= Float.parseFloat(txtTyping.getText().toString()); break;
                     }
