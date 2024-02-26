@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     TextView txtOperation, txtTyping;
-    Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btnPlus, btnMoins, btnMultiplication, btnDivision, btnPourcentage, btnCe, btnC, btnUnSurX, btnCarre, btnRacineCarre, btnMc, btnMr, btnMplus, btnMmoins, btnMs, btnVirgule, btnPlusMoins, btnEgale;
+    Button btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btnPlus, btnMoins, btnMultiplication, btnDivision, btnPourcentage, btnCe, btnC, btnUnSurX, btnCarre, btnRacineCarre, btnVirgule, btnPlusMoins, btnEgale;
     ImageButton btnEffacer;
     Boolean symbol = false, equal=false;
     String nb;
@@ -66,11 +66,6 @@ public class MainActivity extends AppCompatActivity {
         btnPlusMoins = findViewById(R.id.btnPlusMoins);
         btnUnSurX = findViewById(R.id.btnUnSurX);
         btnEffacer = findViewById(R.id.btnEffacer);
-        btnMc = findViewById(R.id.btnMc);
-        btnMr = findViewById(R.id.btnMr);
-        btnMplus = findViewById(R.id.btnMplus);
-        btnMmoins = findViewById(R.id.btnMmoins);
-        btnMs = findViewById(R.id.btnMs);
         btnCarre = findViewById(R.id.btnCarre);
         btnRacineCarre = findViewById(R.id.btnRacineCarre);
 
