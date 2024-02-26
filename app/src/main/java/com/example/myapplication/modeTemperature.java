@@ -76,7 +76,21 @@ public class modeTemperature extends AppCompatActivity {
             }
         });
 
+        btnCorrectionTemp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String typed = selectedTxt.getText().toString();
+                selectedTxt.setText(typed.substring(0, typed.length() - 1));
+                if(selectedTxt.getText().toString().equals("")) selectedTxt.setText("0");
+            }
+        });
 
+        btnCeTemp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                selectedTxt.setText("0");
+            }
+        });
 
         //Menu events
         menu.setOnClickListener(new View.OnClickListener() {
