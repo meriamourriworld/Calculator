@@ -184,6 +184,7 @@ public class MainActivity extends AppCompatActivity {
                 val = 0;
                 symbol = false;
                 equal = false;
+                operation = "";
             }
         });
 
@@ -247,7 +248,6 @@ public class MainActivity extends AppCompatActivity {
                 if(val==0){val = 1;}
                 if(operation.equals("")){operation = "*";}
                 if(equal == false) {
-                    Log.d("MULTI VAL",String.valueOf(val));
                     switch(operation)
                     {
                         case "+": val += Float.parseFloat(txtTyping.getText().toString()); break;
@@ -272,6 +272,7 @@ public class MainActivity extends AppCompatActivity {
         btnDivision.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(val==0){val = 1;}
                 if(operation.equals("")){operation = "/";}
                 if(equal == false) {
                     switch(operation)
@@ -279,7 +280,7 @@ public class MainActivity extends AppCompatActivity {
                         case "+": val += Float.parseFloat(txtTyping.getText().toString()); break;
                         case "-": val -= Float.parseFloat(txtTyping.getText().toString()); break;
                         case "*": val *= Float.parseFloat(txtTyping.getText().toString()); break;
-                        case "/": val /= Float.parseFloat(txtTyping.getText().toString()); break;
+                        case "/": val = Float.parseFloat(txtTyping.getText().toString()) / val; break;
                     }
                 }
                 if((int)val == val) {
