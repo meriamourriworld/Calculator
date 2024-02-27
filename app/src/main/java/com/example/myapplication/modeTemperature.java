@@ -10,6 +10,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -22,7 +23,7 @@ public class modeTemperature extends AppCompatActivity {
     LinearLayout standard, scientifique, temperature;
     ImageView menu, btnCorrectionTemp;
     TextView txtTemp1, txtTemp2, txtTempk, selectedTxt;
-    String selectedUnit1, getSelectedUnit2;
+    String selectedUnit1, selectedUnit2;
     Spinner spinTemp1, spinTemp2;
     Button btnCeTemp, btnPlusMoinsTemp, btnVirguleTemp, btn0Temp, btn1Temp,btn2Temp, btn3Temp, btn4Temp, btn5Temp, btn6Temp, btn7Temp, btn8Temp, btn9Temp;
     String nb;
@@ -58,6 +59,9 @@ public class modeTemperature extends AppCompatActivity {
         btn7Temp = findViewById(R.id.btn7Temp);
         btn8Temp = findViewById(R.id.btn8Temp);
         btn9Temp = findViewById(R.id.btn9Temp);
+
+        //Initialize selectedUnits values
+        selectedUnit1 = selectedUnit2 = spinTemp1.getSelectedItem().toString();
 
         //Buttons Events
         txtTemp1.setOnClickListener(new View.OnClickListener() {
@@ -229,6 +233,28 @@ public class modeTemperature extends AppCompatActivity {
             }
         });
 
+
+        spinTemp1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selectedUnit1 = spinTemp1.getSelectedItem().toString();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        spinTemp2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selectedUnit2 = spinTemp2.getSelectedItem().toString();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         //Menu events
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
