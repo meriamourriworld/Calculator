@@ -151,7 +151,7 @@ public class modeTemperature extends AppCompatActivity {
             public void onClick(View v) {
                 if(selectedTxt != null)
                 {
-                    if(selectedTxt.getText().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1){
+                    if(selectedTxt.getText().toString().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1){
                         nb = "0";
                     }else{
                         nb =selectedTxt.getText()+"0";
@@ -166,7 +166,7 @@ public class modeTemperature extends AppCompatActivity {
             public void onClick(View v) {
                 if(selectedTxt != null)
                 {
-                    nb = (selectedTxt.getText().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1)? "1" : selectedTxt.getText()+"1";
+                    nb = (selectedTxt.getText().toString().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1)? "1" : selectedTxt.getText()+"1";
                     selectedTxt.setText(nb);
                 }
 
@@ -178,7 +178,7 @@ public class modeTemperature extends AppCompatActivity {
             public void onClick(View v) {
                 if(selectedTxt != null)
                 {
-                    nb = (selectedTxt.getText().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1)? "2" : selectedTxt.getText()+"2";
+                    nb = (selectedTxt.getText().toString().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1)? "2" : selectedTxt.getText()+"2";
                     selectedTxt.setText(nb);
                 }
             }
@@ -189,7 +189,7 @@ public class modeTemperature extends AppCompatActivity {
             public void onClick(View v) {
                 if(selectedTxt != null)
                 {
-                    nb = (selectedTxt.getText().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1)? "3" : selectedTxt.getText()+"3";
+                    nb = (selectedTxt.getText().toString().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1)? "3" : selectedTxt.getText()+"3";
                     selectedTxt.setText(nb);
                 }
             }
@@ -200,7 +200,7 @@ public class modeTemperature extends AppCompatActivity {
             public void onClick(View v) {
                 if(selectedTxt != null)
                 {
-                    nb = (selectedTxt.getText().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1)? "4" : selectedTxt.getText()+"4";
+                    nb = (selectedTxt.getText().toString().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1)? "4" : selectedTxt.getText()+"4";
                     selectedTxt.setText(nb);
                 }
             }
@@ -211,7 +211,7 @@ public class modeTemperature extends AppCompatActivity {
             public void onClick(View v) {
                 if(selectedTxt != null)
                 {
-                    nb = (selectedTxt.getText().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1)? "5" : selectedTxt.getText()+"5";
+                    nb = (selectedTxt.getText().toString().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1)? "5" : selectedTxt.getText()+"5";
                     selectedTxt.setText(nb);
                 }
             }
@@ -222,7 +222,7 @@ public class modeTemperature extends AppCompatActivity {
             public void onClick(View v) {
                 if(selectedTxt != null)
                 {
-                    nb = (selectedTxt.getText().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1)? "6" : selectedTxt.getText()+"6";
+                    nb = (selectedTxt.getText().toString().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1)? "6" : selectedTxt.getText()+"6";
                     selectedTxt.setText(nb);
                 }
             }
@@ -233,7 +233,7 @@ public class modeTemperature extends AppCompatActivity {
             public void onClick(View v) {
                 if(selectedTxt != null)
                 {
-                    nb = (selectedTxt.getText().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1)? "7" : selectedTxt.getText()+"7";
+                    nb = (selectedTxt.getText().toString().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1)? "7" : selectedTxt.getText()+"7";
                     selectedTxt.setText(nb);
                 }
             }
@@ -244,7 +244,7 @@ public class modeTemperature extends AppCompatActivity {
             public void onClick(View v) {
                 if(selectedTxt != null)
                 {
-                    nb = (selectedTxt.getText().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1) ? "8" : selectedTxt.getText() + "8";
+                    nb = (selectedTxt.getText().toString().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1) ? "8" : selectedTxt.getText() + "8";
                     selectedTxt.setText(nb);
                 }
             }
@@ -255,7 +255,7 @@ public class modeTemperature extends AppCompatActivity {
             public void onClick(View v) {
                 if(selectedTxt != null)
                 {
-                    nb = (selectedTxt.getText().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1) ? "9" : selectedTxt.getText() + "9";
+                    nb = (selectedTxt.getText().toString().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1) ? "9" : selectedTxt.getText() + "9";
                     selectedTxt.setText(nb);
                 }
             }
@@ -361,6 +361,6 @@ public class modeTemperature extends AppCompatActivity {
                     break;
             }
         }
-        return result;
+        return Math.round(result * 100.0) / 100.0;
     }
 }
