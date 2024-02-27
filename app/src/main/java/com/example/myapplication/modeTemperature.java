@@ -29,6 +29,7 @@ public class modeTemperature extends AppCompatActivity {
     Spinner spinTemp1, spinTemp2;
     Button btnCeTemp, btnPlusMoinsTemp, btnVirguleTemp, btn0Temp, btn1Temp,btn2Temp, btn3Temp, btn4Temp, btn5Temp, btn6Temp, btn7Temp, btn8Temp, btn9Temp;
     String nb;
+    int nbTempRestant = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +82,7 @@ public class modeTemperature extends AppCompatActivity {
                     public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
                     @Override
                     public void onTextChanged(CharSequence s, int start, int before, int count) {
-                        Log.d("ON CHANGE", selectedTxt.getText().toString());
+                        txtTemp2.setText(String.valueOf(convertirTemperaturePrincipal(selectedUnit1, selectedUnit2)));
                     }
                     @Override
                     public void afterTextChanged(Editable s) {}
@@ -101,7 +102,7 @@ public class modeTemperature extends AppCompatActivity {
                     public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
                     @Override
                     public void onTextChanged(CharSequence s, int start, int before, int count) {
-                        Log.d("ON CHANGE", selectedTxt.getText().toString());
+                        txtTemp1.setText(String.valueOf(convertirTemperaturePrincipal(selectedUnit2, selectedUnit1)));
                     }
                     @Override
                     public void afterTextChanged(Editable s) {}
@@ -284,9 +285,6 @@ public class modeTemperature extends AppCompatActivity {
             }
         });
 
-        //Conversion Functions
-
-
         //Menu events
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -328,5 +326,41 @@ public class modeTemperature extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         closeDrawer(drawer);
+    }
+
+    //Conversion Functions
+    public double convertirTemperaturePrincipal(String unit1, String unit2)
+    {
+        double valToConvert = Double.parseDouble(selectedTxt.getText().toString());
+        double result = 0;
+        if(unit1.equals(unit2))
+        {
+            result = Float.parseFloat(selectedTxt.getText().toString());
+            nbTempRestant = 2;
+        }
+        else
+        {
+            nbTempRestant = 1;
+            switch (unit1)
+            {
+                case "Celsius":
+                    if(unit2.equals("Fahrenheit")){result = ((valToConvert * (9.0/5)) + 32);}
+                    else if(unit2.equals("Kelvin")){ result = (valToConvert + 273.15);}
+
+                    break;
+
+                case "Fahrenheit":
+                    if(unit2.equals("Celsius")) {result = ((valToConvert - 32) * (5.0/9));}
+                    else if(unit2.equals("Kelvin")){ result = (((valToConvert -  32) * (5.0/9)) + 273.15);}
+                    break;
+
+                case "Kelvin":
+
+                    if(unit2.equals("Celsius")){ result = (valToConvert - 273.15);}
+                    else if(unit2.equals("Fahrenheit")){ result = (((valToConvert - 273.15) * (9.0/5)) + 32);}
+                    break;
+            }
+        }
+        return result;
     }
 }
