@@ -8,6 +8,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -45,6 +47,9 @@ public class modeTemperature extends AppCompatActivity {
         txtTempk = findViewById(R.id.txtTempKelvin);
         spinTemp1 = findViewById(R.id.spinTemp1);
         spinTemp2 = findViewById(R.id.spinTemp2);
+        //Set selected txt to txtTemp1
+        selectedTxt = txtTemp1;
+
         btnCorrectionTemp = findViewById(R.id.btnEffacerTemp);
         btnCeTemp = findViewById(R.id.btnCTemp);
         btnVirguleTemp = findViewById(R.id.btnVirguleTemp);
@@ -70,6 +75,17 @@ public class modeTemperature extends AppCompatActivity {
                 txtTemp1.setTypeface(null, Typeface.BOLD);
                 txtTemp2.setTypeface(null, Typeface.NORMAL);
                 selectedTxt = txtTemp1;
+                //ON TXTCHANGE EVENTS
+                selectedTxt.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        Log.d("ON CHANGE", selectedTxt.getText().toString());
+                    }
+                    @Override
+                    public void afterTextChanged(Editable s) {}
+                });
             }
         });
 
@@ -79,6 +95,17 @@ public class modeTemperature extends AppCompatActivity {
                 txtTemp2.setTypeface(null, Typeface.BOLD);
                 txtTemp1.setTypeface(null, Typeface.NORMAL);
                 selectedTxt = txtTemp2;
+                //ON TXTCHANGE EVENTS
+                selectedTxt.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+                        Log.d("ON CHANGE", selectedTxt.getText().toString());
+                    }
+                    @Override
+                    public void afterTextChanged(Editable s) {}
+                });
             }
         });
 
@@ -250,11 +277,16 @@ public class modeTemperature extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 selectedUnit2 = spinTemp2.getSelectedItem().toString();
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
+
+        //Conversion Functions
+
+
         //Menu events
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
