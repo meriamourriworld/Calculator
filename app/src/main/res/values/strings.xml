@@ -10,4 +10,10 @@
     <string name="calcTitle">Calculatrice</string>
     <string name="convertTitle">Convertisseur</string>
     <string name="progression">En Cours</string>
+    <string name="auth">Authentification</string>
+    <string name="nom">Nom</string>
+    <string name="mail">E-mail</string>
+    <string name="mp">Mot de Passe</string>
+    <string name="btnValider">Valider</string>
+    <string name="btnNouveau">Nouveau Compte ?</string>
 </resources>
