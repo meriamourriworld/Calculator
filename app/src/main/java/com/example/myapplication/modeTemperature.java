@@ -98,10 +98,11 @@ public class modeTemperature extends AppCompatActivity {
             public void onClick(View v) {
                 txtTemp1.setTypeface(null, Typeface.BOLD);
                 txtTemp2.setTypeface(null, Typeface.NORMAL);
+                txtTemp1.removeTextChangedListener(textWatcher1);
+                txtTemp2.removeTextChangedListener(textWatcher2);
                 selectedTxt = txtTemp1;
                 selectionChanged = true;
                 //ON TXTCHANGE EVENTS
-                txtTemp2.removeTextChangedListener(textWatcher2);
                 selectedTxt.addTextChangedListener(textWatcher1);
             }
         });
@@ -111,10 +112,11 @@ public class modeTemperature extends AppCompatActivity {
             public void onClick(View v) {
                 txtTemp2.setTypeface(null, Typeface.BOLD);
                 txtTemp1.setTypeface(null, Typeface.NORMAL);
+                txtTemp1.removeTextChangedListener(textWatcher1);
+                txtTemp2.removeTextChangedListener(textWatcher2);
                 selectedTxt = txtTemp2;
                 selectionChanged = true;
                 //ON TXTCHANGE EVENTS
-                txtTemp1.removeTextChangedListener(textWatcher1);
                 selectedTxt.addTextChangedListener(textWatcher2);
             }
         });
@@ -123,8 +125,12 @@ public class modeTemperature extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String typed = selectedTxt.getText().toString();
-                selectedTxt.setText(typed.substring(0, typed.length() - 1));
-                if(selectedTxt.getText().toString().equals("")) selectedTxt.setText("0");
+                if(typed.length() > 1)
+                {
+                    selectedTxt.setText(typed.substring(0, typed.length() - 1));
+                }else {
+                    selectedTxt.setText("0");
+                }
             }
         });
 
