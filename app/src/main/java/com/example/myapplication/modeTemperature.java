@@ -78,6 +78,7 @@ public class modeTemperature extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 txtTemp2.setText(String.valueOf(convertirTemperaturePrincipal(selectedUnit1, selectedUnit2)));
+                convertirTemperatureSecondaire(selectedUnit1);
             }
             @Override
             public void afterTextChanged(Editable s) {}
@@ -89,6 +90,7 @@ public class modeTemperature extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 txtTemp1.setText(String.valueOf(convertirTemperaturePrincipal(selectedUnit2, selectedUnit1)));
+                convertirTemperatureSecondaire(selectedUnit2);
             }
             @Override
             public void afterTextChanged(Editable s) {}
@@ -388,5 +390,45 @@ public class modeTemperature extends AppCompatActivity {
             }
         }
         return Math.round(result * 100.0) / 100.0;
+    }
+
+    public void convertirTemperatureSecondaire(String un)
+    {
+        String unites[] = {"Celsius", "Fahrenheit", "Kelvin"};
+        String unite1="", unite2 = "";
+        if(nbTempRestant == 1)
+        {
+            for(int i= 0; i < unites.length ; i++)
+            {
+                if(!unites[i].equals(selectedUnit1) && !unites[i].equals(selectedUnit2))
+                {
+                    unite1 = unites[i];
+                    break;
+                }
+            }
+            txtTempk.setText(String.valueOf(convertirTemperaturePrincipal(un, unite1)) + " " + unite1);
+        }
+        if(nbTempRestant == 2)
+        {
+            int ind=0;
+            for(int i= 0; i < unites.length ; i++)
+            {
+                if(!unites[i].equals(selectedUnit1) && !unites[i].equals(selectedUnit2))
+                {
+                    unite1 = unites[i];
+                    ind = i;
+                    break;
+                }
+            }
+            for(int i= ind+1; i < unites.length ; i++)
+            {
+                if(!unites[i].equals(selectedUnit1) && !unites[i].equals(selectedUnit2))
+                {
+                    unite2 = unites[i];
+                    break;
+                }
+            }
+            txtTempk.setText(String.valueOf(convertirTemperaturePrincipal(un, unite1)) + " " + unite1 + "    \t  " + String.valueOf(convertirTemperaturePrincipal(un, unite2)) + " " + unite2);
+        }
     }
 }
