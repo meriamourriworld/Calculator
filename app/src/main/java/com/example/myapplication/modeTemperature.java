@@ -29,6 +29,7 @@ public class modeTemperature extends AppCompatActivity {
     Spinner spinTemp1, spinTemp2;
     Button btnCeTemp, btnPlusMoinsTemp, btnVirguleTemp, btn0Temp, btn1Temp,btn2Temp, btn3Temp, btn4Temp, btn5Temp, btn6Temp, btn7Temp, btn8Temp, btn9Temp;
     String nb;
+    Boolean selectionChanged = false;
     int nbTempRestant = 0;
 
     @Override
@@ -49,7 +50,6 @@ public class modeTemperature extends AppCompatActivity {
         spinTemp1 = findViewById(R.id.spinTemp1);
         spinTemp2 = findViewById(R.id.spinTemp2);
         //Set selected txt to txtTemp1
-        selectedTxt = txtTemp1;
 
         btnCorrectionTemp = findViewById(R.id.btnEffacerTemp);
         btnCeTemp = findViewById(R.id.btnCTemp);
@@ -70,23 +70,39 @@ public class modeTemperature extends AppCompatActivity {
         selectedUnit1 = selectedUnit2 = spinTemp1.getSelectedItem().toString();
 
         //Buttons Events
+        //Text WATCHERS
+        TextWatcher textWatcher1 = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                txtTemp2.setText(String.valueOf(convertirTemperaturePrincipal(selectedUnit1, selectedUnit2)));
+            }
+            @Override
+            public void afterTextChanged(Editable s) {}
+        };
+
+        TextWatcher textWatcher2 = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                txtTemp1.setText(String.valueOf(convertirTemperaturePrincipal(selectedUnit2, selectedUnit1)));
+            }
+            @Override
+            public void afterTextChanged(Editable s) {}
+        };
         txtTemp1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 txtTemp1.setTypeface(null, Typeface.BOLD);
                 txtTemp2.setTypeface(null, Typeface.NORMAL);
                 selectedTxt = txtTemp1;
+                selectionChanged = true;
                 //ON TXTCHANGE EVENTS
-                selectedTxt.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-                        txtTemp2.setText(String.valueOf(convertirTemperaturePrincipal(selectedUnit1, selectedUnit2)));
-                    }
-                    @Override
-                    public void afterTextChanged(Editable s) {}
-                });
+                txtTemp2.removeTextChangedListener(textWatcher2);
+                selectedTxt.addTextChangedListener(textWatcher1);
             }
         });
 
@@ -96,17 +112,10 @@ public class modeTemperature extends AppCompatActivity {
                 txtTemp2.setTypeface(null, Typeface.BOLD);
                 txtTemp1.setTypeface(null, Typeface.NORMAL);
                 selectedTxt = txtTemp2;
+                selectionChanged = true;
                 //ON TXTCHANGE EVENTS
-                selectedTxt.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-                        txtTemp1.setText(String.valueOf(convertirTemperaturePrincipal(selectedUnit2, selectedUnit1)));
-                    }
-                    @Override
-                    public void afterTextChanged(Editable s) {}
-                });
+                txtTemp1.removeTextChangedListener(textWatcher1);
+                selectedTxt.addTextChangedListener(textWatcher2);
             }
         });
 
@@ -131,6 +140,7 @@ public class modeTemperature extends AppCompatActivity {
             public void onClick(View v) {
                 String res=  (selectedTxt.getText().toString().indexOf(".") == -1)? (selectedTxt.getText() + ".") : (selectedTxt.getText() + "");
                 selectedTxt.setText(res);
+                selectionChanged = false;
             }
         });
 
@@ -151,10 +161,11 @@ public class modeTemperature extends AppCompatActivity {
             public void onClick(View v) {
                 if(selectedTxt != null)
                 {
-                    if(selectedTxt.getText().toString().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1){
+                    if(selectionChanged || selectedTxt.getText().toString().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1){
                         nb = "0";
                     }else{
                         nb =selectedTxt.getText()+"0";
+                        selectionChanged = false;
                     }
                     selectedTxt.setText(nb);
                 }
@@ -166,8 +177,9 @@ public class modeTemperature extends AppCompatActivity {
             public void onClick(View v) {
                 if(selectedTxt != null)
                 {
-                    nb = (selectedTxt.getText().toString().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1)? "1" : selectedTxt.getText()+"1";
+                    if(selectionChanged || selectedTxt.getText().toString().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1){ nb= "1"; selectionChanged = false;} else { nb = selectedTxt.getText()+"1";}
                     selectedTxt.setText(nb);
+                    selectionChanged = false;
                 }
 
             }
@@ -178,8 +190,9 @@ public class modeTemperature extends AppCompatActivity {
             public void onClick(View v) {
                 if(selectedTxt != null)
                 {
-                    nb = (selectedTxt.getText().toString().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1)? "2" : selectedTxt.getText()+"2";
+                    if(selectionChanged || selectedTxt.getText().toString().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1){ nb= "2"; selectionChanged = false;} else{ nb= selectedTxt.getText()+"2";}
                     selectedTxt.setText(nb);
+                    selectionChanged = false;
                 }
             }
         });
@@ -189,8 +202,9 @@ public class modeTemperature extends AppCompatActivity {
             public void onClick(View v) {
                 if(selectedTxt != null)
                 {
-                    nb = (selectedTxt.getText().toString().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1)? "3" : selectedTxt.getText()+"3";
+                    if(selectionChanged || selectedTxt.getText().toString().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1){ nb= "3"; selectionChanged = false;} else{ nb= selectedTxt.getText()+"3";}
                     selectedTxt.setText(nb);
+                    selectionChanged = false;
                 }
             }
         });
@@ -200,8 +214,9 @@ public class modeTemperature extends AppCompatActivity {
             public void onClick(View v) {
                 if(selectedTxt != null)
                 {
-                    nb = (selectedTxt.getText().toString().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1)? "4" : selectedTxt.getText()+"4";
+                    if(selectionChanged || selectedTxt.getText().toString().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1){ nb =  "4"; selectionChanged = false;} else{ nb = selectedTxt.getText()+"4";}
                     selectedTxt.setText(nb);
+                    selectionChanged = false;
                 }
             }
         });
@@ -211,8 +226,9 @@ public class modeTemperature extends AppCompatActivity {
             public void onClick(View v) {
                 if(selectedTxt != null)
                 {
-                    nb = (selectedTxt.getText().toString().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1)? "5" : selectedTxt.getText()+"5";
+                    if(selectionChanged || selectedTxt.getText().toString().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1){nb= "5"; selectionChanged = false;} else{ nb=  selectedTxt.getText()+"5";}
                     selectedTxt.setText(nb);
+                    selectionChanged = false;
                 }
             }
         });
@@ -222,8 +238,9 @@ public class modeTemperature extends AppCompatActivity {
             public void onClick(View v) {
                 if(selectedTxt != null)
                 {
-                    nb = (selectedTxt.getText().toString().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1)? "6" : selectedTxt.getText()+"6";
+                    if(selectionChanged || selectedTxt.getText().toString().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1) { nb ="6"; selectionChanged = false;} else{nb = selectedTxt.getText()+"6";}
                     selectedTxt.setText(nb);
+                    selectionChanged = false;
                 }
             }
         });
@@ -233,8 +250,9 @@ public class modeTemperature extends AppCompatActivity {
             public void onClick(View v) {
                 if(selectedTxt != null)
                 {
-                    nb = (selectedTxt.getText().toString().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1)? "7" : selectedTxt.getText()+"7";
+                    if(selectionChanged || selectedTxt.getText().toString().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1) {nb ="7"; selectionChanged= false;} else{ nb = selectedTxt.getText()+"7";}
                     selectedTxt.setText(nb);
+                    selectionChanged = false;
                 }
             }
         });
@@ -244,8 +262,9 @@ public class modeTemperature extends AppCompatActivity {
             public void onClick(View v) {
                 if(selectedTxt != null)
                 {
-                    nb = (selectedTxt.getText().toString().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1) ? "8" : selectedTxt.getText() + "8";
+                    if(selectionChanged || selectedTxt.getText().toString().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1) {nb ="8"; selectionChanged = false;} else {nb= selectedTxt.getText() + "8";}
                     selectedTxt.setText(nb);
+                    selectionChanged = false;
                 }
             }
         });
@@ -255,8 +274,9 @@ public class modeTemperature extends AppCompatActivity {
             public void onClick(View v) {
                 if(selectedTxt != null)
                 {
-                    nb = (selectedTxt.getText().toString().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1) ? "9" : selectedTxt.getText() + "9";
+                    if(selectionChanged || selectedTxt.getText().toString().equals("0")&& selectedTxt.getText().toString().indexOf(".")==-1)  {nb ="9";selectionChanged = false;} else{ nb= selectedTxt.getText() + "9";}
                     selectedTxt.setText(nb);
+
                 }
             }
         });
@@ -335,7 +355,7 @@ public class modeTemperature extends AppCompatActivity {
         double result = 0;
         if(unit1.equals(unit2))
         {
-            result = Float.parseFloat(selectedTxt.getText().toString());
+            result = Double.parseDouble(selectedTxt.getText().toString());
             nbTempRestant = 2;
         }
         else
