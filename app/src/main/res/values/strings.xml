@@ -16,4 +16,8 @@
     <string name="mp">Mot de Passe</string>
     <string name="btnValider">Valider</string>
     <string name="btnNouveau">Nouveau Compte ?</string>
+    <string name="titreNouveauCompte">Nouveau Compte</string>
+    <string name="btnCreerNouveauCompte">Créer</string>
+    <string name="btnRetour">Retour</string>
+
 </resources>

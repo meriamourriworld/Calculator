@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#232323"
+    android:orientation="vertical"
+    tools:context=".nouveauCompte">
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        app:srcCompat="@drawable/account" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/titreNouveauCompte"
+        android:textColor="#BCBCBC"
+        android:textSize="34sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="60dp"
+            android:text="@string/nom"
+            android:textColor="#D5D5D5"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/edNewAccountNom"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:ems="10"
+            android:hint="Votre Nom"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/mail"
+            android:textColor="#D5D5D5"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/edNewAccountMail"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:ems="10"
+            android:hint="Votre e-mail"
+            android:inputType="textEmailAddress" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:padding="3dp"
+            android:text="@string/mp"
+            android:textColor="#D5D5D5"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/edNewAccountMp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:ems="10"
+            android:hint="Mot de Passe"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/btnNAccCreer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:backgroundTint="#1078FE"
+            android:padding="10dp"
+            android:text="@string/btnCreerNouveauCompte"
+            android:textSize="20sp"
+            app:cornerRadius="1dp" />
+
+        <Button
+            android:id="@+id/btnNewAccountRetour"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:backgroundTint="#1078FE"
+            android:padding="10dp"
+            android:text="@string/btnRetour"
+            android:textSize="20sp"
+            app:cornerRadius="1dp" />
+    </LinearLayout>
+</LinearLayout>
