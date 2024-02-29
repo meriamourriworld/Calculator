@@ -32,6 +32,13 @@ public class nouveauCompte extends AppCompatActivity {
                 finish();
             }
         });
+
+        btnNAccCreer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
     public static void redirectActivity(Activity activite, Class activite1)
     {
