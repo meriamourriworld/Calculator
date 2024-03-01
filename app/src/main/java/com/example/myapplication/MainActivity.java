@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     String operation="";
     //Menu Declarations
     DrawerLayout drawer;
-    LinearLayout standard, scientifique, temperature;
+    LinearLayout standard, scientifique, temperature, retour;
     ImageView menu;
 
 
@@ -35,10 +35,11 @@ public class MainActivity extends AppCompatActivity {
 
         //Récupérer les composants menu
         drawer = findViewById(R.id.drawerLayout);
-        menu = findViewById(R.id.menuDevise);
+        menu = findViewById(R.id.mainMenu);
         standard = findViewById(R.id.menuStandard);
         scientifique = findViewById(R.id.menuScientifique);
         temperature = findViewById(R.id.menuTemperature);
+        retour = findViewById(R.id.menuRetour);
 
         //Creation of views
         txtOperation = findViewById(R.id.txtOperation);
@@ -424,6 +425,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 redirectActivity(MainActivity.this, modeTemperature.class);
+            }
+        });
+        retour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                redirectActivity(MainActivity.this, afficherClients.class);
             }
         });
     }

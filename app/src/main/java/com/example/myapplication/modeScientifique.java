@@ -23,7 +23,7 @@ public class modeScientifique extends AppCompatActivity {
         setContentView(R.layout.activity_mode_scientifique);
         //Récupérer les composants menu
         drawer = findViewById(R.id.drawerLayout);
-        menu = findViewById(R.id.menuDevise);
+        menu = findViewById(R.id.mainMenu);
         standard = findViewById(R.id.menuStandard);
         scientifique = findViewById(R.id.menuScientifique);
         temperature = findViewById(R.id.menuTemperature);

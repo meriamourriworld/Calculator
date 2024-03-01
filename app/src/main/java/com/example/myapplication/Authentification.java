@@ -36,6 +36,7 @@ public class Authentification extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 redirectActivity(Authentification.this, nouveauCompte.class);
+                finish();
             }
         });
         btnAuthValider.setOnClickListener(new View.OnClickListener() {
@@ -53,7 +54,7 @@ public class Authentification extends AppCompatActivity {
                     }
                     else{
                         Log.d("CONNECTED", client.toString());
-                        //redirectActivity(Authentification.this, afficherClients.class);
+                        redirectActivity(Authentification.this, afficherClients.class);
                     }
                 }else{
                     txtAuthErr.setText(msg);

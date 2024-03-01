@@ -10,7 +10,6 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -18,11 +17,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class modeTemperature extends AppCompatActivity {
     DrawerLayout drawer;
-    LinearLayout standard, scientifique, temperature;
+    LinearLayout standard, scientifique, temperature,retour;
     ImageView menu, btnCorrectionTemp;
     TextView txtTemp1, txtTemp2, txtTempk, selectedTxt;
     String selectedUnit1, selectedUnit2;
@@ -38,10 +36,11 @@ public class modeTemperature extends AppCompatActivity {
         setContentView(R.layout.activity_mode_temperature);
         //Récupérer les composants menu
         drawer = findViewById(R.id.drawerLayout);
-        menu = findViewById(R.id.menuDevise);
+        menu = findViewById(R.id.mainMenu);
         standard = findViewById(R.id.menuStandard);
         scientifique = findViewById(R.id.menuScientifique);
         temperature = findViewById(R.id.menuTemperature);
+        retour = findViewById(R.id.menuRetour);
 
         //Récupérer les composants
         txtTemp1 = findViewById(R.id.txtTemp1);
@@ -337,6 +336,12 @@ public class modeTemperature extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 recreate();
+            }
+        });
+        retour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                redirectActivity(modeTemperature.this, afficherClients.class);
             }
         });
     }

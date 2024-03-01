@@ -19,5 +19,9 @@
     <string name="titreNouveauCompte">Nouveau Compte</string>
     <string name="btnCreerNouveauCompte">Créer</string>
     <string name="btnRetour">Retour</string>
+    <string name="developpeuse">Développé par : Meriam Ourri</string>
+    <string name="deconnecter">Log out</string>
+    <string name="clients">Clients</string>
+    <string name="logoname">CustDigit</string>
 
 </resources>
