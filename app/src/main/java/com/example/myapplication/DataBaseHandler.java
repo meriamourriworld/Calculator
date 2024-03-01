@@ -56,10 +56,8 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         String pass;
         Cursor cursor = db.query(TABLE,new String[] {COLUMN1, COLUMN2, COLUMN3},"email=? and motPasse=? ",new String[] {email, mp},null,null,null);
-        if(cursor != null)
+        if(cursor.moveToFirst())
         {
-            cursor.moveToFirst();
-
             client = new Client(cursor.getString(0),cursor.getString(1), cursor.getString(2));
         }
         return client;

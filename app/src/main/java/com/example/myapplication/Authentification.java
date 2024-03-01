@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Authentification extends AppCompatActivity {
 
@@ -46,7 +47,14 @@ public class Authentification extends AppCompatActivity {
                 if(msg.equals(""))
                 {
                     Client client = db.getClient(edAuthMail.getText().toString(), edAuthMp.getText().toString());
-                    Log.d("CONNECTED", client.toString());
+                    if(client == null)
+                    {
+                        Toast.makeText(Authentification.this, "Ce client est inexistant !", Toast.LENGTH_LONG).show();
+                    }
+                    else{
+                        Log.d("CONNECTED", client.toString());
+                        //redirectActivity(Authentification.this, afficherClients.class);
+                    }
                 }else{
                     txtAuthErr.setText(msg);
                 }
