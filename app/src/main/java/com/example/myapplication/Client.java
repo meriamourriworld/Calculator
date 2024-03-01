@@ -1,3 +1,5 @@
+package com.example.myapplication;
+
 public class Client {
     private int idClient;
     private String nom;
@@ -37,7 +39,7 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Client{" +
+        return "com.example.myapplication.Client{" +
                 "idClient=" + idClient +
                 ", nom='" + nom + '\'' +
                 ", email='" + email + '\'' +

@@ -33,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="40dp"
             android:text="@string/nom"
             android:textColor="#D5D5D5"
             android:textSize="20sp" />
@@ -46,7 +46,8 @@
             android:layout_marginEnd="15dp"
             android:ems="10"
             android:hint="Votre Nom"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textColor="#EAEAEA" />
 
         <TextView
             android:id="@+id/textView16"
@@ -66,7 +67,8 @@
             android:layout_marginEnd="15dp"
             android:ems="10"
             android:hint="Votre e-mail"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:textColor="#EAEAEA" />
 
         <TextView
             android:id="@+id/textView17"
@@ -87,7 +89,17 @@
             android:layout_marginEnd="15dp"
             android:ems="10"
             android:hint="Mot de Passe"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:textColor="#EAEAEA" />
+
+        <TextView
+            android:id="@+id/txtNAccountError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:textColor="#9F1B1B"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/btnNAccCreer"
