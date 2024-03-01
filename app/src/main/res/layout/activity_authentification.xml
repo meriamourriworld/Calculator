@@ -82,6 +82,15 @@
             android:textAlignment="textStart"
             android:textColor="#00ACC1" />
 
+        <TextView
+            android:id="@+id/txtAuthError"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:textColor="#CA0F0F"
+            android:textSize="16sp" />
+
         <Button
             android:id="@+id/btnAuthValider"
             android:layout_width="match_parent"

@@ -5,14 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class Authentification extends AppCompatActivity {
 
     Button btnAuthValider, btnNouveauCompte;
     EditText edAuthMail, edAuthMp;
+    TextView txtAuthErr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +26,9 @@ public class Authentification extends AppCompatActivity {
         edAuthMp = findViewById(R.id.edAuthmp);
         btnAuthValider = findViewById(R.id.btnAuthValider);
         btnNouveauCompte = findViewById(R.id.btnNouveauCompte);
+        txtAuthErr = findViewById(R.id.txtAuthError);
+
+        DataBaseHandler db = new DataBaseHandler(this);
 
         //ÉVÉNEMENTS
         btnNouveauCompte.setOnClickListener(new View.OnClickListener() {
@@ -34,7 +40,16 @@ public class Authentification extends AppCompatActivity {
         btnAuthValider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //checking if empty or not a user
+                String msg = verifierChamps();
+                txtAuthErr.setText("");
+
+                if(msg.equals(""))
+                {
+                    Client client = db.getClient(edAuthMail.getText().toString(), edAuthMp.getText().toString());
+                    Log.d("CONNECTED", client.toString());
+                }else{
+                    txtAuthErr.setText(msg);
+                }
             }
         });
     }
@@ -42,5 +57,13 @@ public class Authentification extends AppCompatActivity {
     {
         Intent intent = new Intent(activite, activite1);
         activite.startActivity(intent);
+    }
+    public String verifierChamps()
+    {
+        String mail = edAuthMail.getText().toString();
+        String mp = edAuthMp.getText().toString();
+        if(mail.equals("")) return "L'e-mail est obligatoire !";
+        if(mp.equals("")) return "Le mot de passe est obligatoire !";
+        return "";
     }
 }
