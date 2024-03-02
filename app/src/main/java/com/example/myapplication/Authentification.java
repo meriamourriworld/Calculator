@@ -53,7 +53,6 @@ public class Authentification extends AppCompatActivity {
                         Toast.makeText(Authentification.this, "Ce client est inexistant !", Toast.LENGTH_LONG).show();
                     }
                     else{
-                        Log.d("CONNECTED", client.toString());
                         redirectActivity(Authentification.this, afficherClients.class);
                     }
                 }else{
