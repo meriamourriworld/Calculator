@@ -9,8 +9,11 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -82,22 +85,39 @@ public class afficherClients extends AppCompatActivity {
             LinearLayout clientContainer = new LinearLayout(this);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             params.setMargins(0, 10, 0, 20);
-            clientContainer.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
             clientContainer.setOrientation(LinearLayout.VERTICAL);
             clientContainer.setBackgroundColor(Color.rgb(197,183,214));
             clientContainer.setPadding(60,50, 0 ,60);
             clientContainer.setTop(20);
 
             //Creation Du conteneur du nom et icone de suppression
+            LinearLayout myContainer = new LinearLayout(this);
+            LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+            myContainer.setOrientation(LinearLayout.HORIZONTAL);
+            myContainer.setPadding(0,0,40,0);
+
+            LinearLayout.LayoutParams paramsIcon = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            paramsIcon.weight =0;
+            paramsIcon.topMargin = 10;
+            //Icone de suppression
             ImageView deleteIcon = new ImageView(this);
             deleteIcon.setImageResource(R.drawable.baseline_delete_24);
             deleteIcon.setTooltipText(cl.getEmail());
+            deleteIcon.setLayoutParams(paramsIcon);
+
+
 
             //Creation des textView
+            LinearLayout.LayoutParams paramstvNom = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT);
+            paramstvNom.weight =1;
             TextView tvnom = new TextView(this);
             tvnom.setText(cl.getNom());
             tvnom.setTextSize(20);
+            tvnom.setLayoutParams(paramstvNom);
             tvnom.setPadding(60,10, 0 ,0);
+
 
 
             TextView tvmail = new TextView(this);
@@ -105,9 +125,8 @@ public class afficherClients extends AppCompatActivity {
             tvmail.setTextSize(20);
             tvmail.setPadding(60,10, 0 ,0);
 
-            clientContainer.addView(tvnom);
-            clientContainer.addView(deleteIcon);
-            clientContainer.addView(tvmail);
+            myContainer.addView(tvnom);
+            myContainer.addView(deleteIcon);
 
             //Evénements
             deleteIcon.setOnClickListener(new View.OnClickListener() {
@@ -129,6 +148,9 @@ public class afficherClients extends AppCompatActivity {
                     }
                 }
             });
+
+            clientContainer.addView(myContainer, params1);
+            clientContainer.addView(tvmail);
 
             containerClient.addView(clientContainer,params);
         }
