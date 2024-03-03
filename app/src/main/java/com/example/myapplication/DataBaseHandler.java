@@ -74,14 +74,6 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         if(cursor.moveToFirst())
         {
             do {
-                /*SecretKey secretKey = getKey();
-                try {
-                    pass = CryptoUtils.decrypt(cursor.getString(2), (SecretKeySpec) secretKey);
-                } catch (GeneralSecurityException e) {
-                    throw new RuntimeException(e);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }*/
                 client = new Client(cursor.getString(0), cursor.getString(1), cursor.getString(2));
                 listeClients.add(client);
                 }while(cursor.moveToNext());
@@ -91,20 +83,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 
     public long ajouterClient(Client client)
     {
-        String mp;
         SQLiteDatabase db = this.getWritableDatabase();
-
-        /*SecretKeySpec secretKey =  getKey();
-        try {
-            mp = CryptoUtils.encrypt(client.getMotPasse(), secretKey);
-            Log.d("DECRYPTED MP", CryptoUtils.decrypt(mp,secretKey));
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        } catch (GeneralSecurityException | IOException e) {
-            throw new RuntimeException(e);
-        }*/
-
-
         ContentValues values = new ContentValues();
         values.put(COLUMN1, client.getNom());
         values.put(COLUMN2, client.getEmail());
@@ -115,23 +94,15 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         return res;
     }
 
-
-
-    public SecretKeySpec getKey()
+    public long supprimerClient(String email)
     {
-        char[] password = "pass".toCharArray();
-        byte[] salt = new byte[16]; // Remplissez le sel avec des données aléatoires
-        int iterationCount = 10000; // Nombre d'itérations
-        int keyLength = 256; // Longueur de la clé en bits
-        SecretKeySpec secretKey = null;
-        try {
-            secretKey = CryptoUtils.createSecretKey(password, salt, iterationCount, keyLength);
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        } catch (InvalidKeySpecException e) {
-            throw new RuntimeException(e);
-        }
-        return secretKey;
+        SQLiteDatabase db = this.getWritableDatabase();
+        long res = db.delete(TABLE,"email=?",new String[] {email});
+        return res;
     }
+
+
+
+
 
 }

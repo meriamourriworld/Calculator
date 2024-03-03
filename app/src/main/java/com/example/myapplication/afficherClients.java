@@ -15,6 +15,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
@@ -61,10 +64,19 @@ public class afficherClients extends AppCompatActivity {
             }
         });
 
+        fetchClients();
+
+    }
+
+    //Fonction de récupération des clients
+    public void fetchClients()
+    {
         //Initialiser la dbHandler
         DataBaseHandler db = new DataBaseHandler(this);
         //Récupérer les clients depuis la Base de données
         ArrayList<Client> lsClients = new ArrayList<Client>(db.getClients());
+        Log.d("SIZE", String.valueOf(lsClients.size()));
+        containerClient.removeAllViews();
         for(Client cl : lsClients)
         {
             LinearLayout clientContainer = new LinearLayout(this);
@@ -75,6 +87,11 @@ public class afficherClients extends AppCompatActivity {
             clientContainer.setBackgroundColor(Color.rgb(197,183,214));
             clientContainer.setPadding(60,50, 0 ,60);
             clientContainer.setTop(20);
+
+            //Creation Du conteneur du nom et icone de suppression
+            ImageView deleteIcon = new ImageView(this);
+            deleteIcon.setImageResource(R.drawable.baseline_delete_24);
+            deleteIcon.setTooltipText(cl.getEmail());
 
             //Creation des textView
             TextView tvnom = new TextView(this);
@@ -89,13 +106,33 @@ public class afficherClients extends AppCompatActivity {
             tvmail.setPadding(60,10, 0 ,0);
 
             clientContainer.addView(tvnom);
+            clientContainer.addView(deleteIcon);
             clientContainer.addView(tvmail);
+
+            //Evénements
+            deleteIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(db.supprimerClient(deleteIcon.getTooltipText().toString()) != -1)
+                    {
+                        Snackbar.make(containerClient, "Client supprimé avec succès", Snackbar.LENGTH_LONG)
+                                .setBackgroundTint(Color.rgb(67, 160, 71))
+                                .setTextColor(Color.WHITE)
+                                .show();
+                        fetchClients();
+                    }
+                    else
+                    {
+                        Snackbar.make(afficherClients.this.getCurrentFocus(), "Erreur lors de la suppression", Snackbar.LENGTH_LONG)
+                                .setBackgroundTint(Color.RED)
+                                .show();
+                    }
+                }
+            });
 
             containerClient.addView(clientContainer,params);
         }
     }
-
-
     //Fonctions drawer menu
     public static void openDrawer(DrawerLayout dl){dl.openDrawer(GravityCompat.START);}
     public static void closeDrawer(DrawerLayout dl){dl.closeDrawer(GravityCompat.START);}
@@ -108,4 +145,6 @@ public class afficherClients extends AppCompatActivity {
         Intent intent = new Intent(act1, act2);
         act1.startActivity(intent);
     }
+
+
 }
