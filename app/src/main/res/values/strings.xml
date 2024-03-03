@@ -23,5 +23,7 @@
     <string name="deconnecter">Log out</string>
     <string name="clients">Clients</string>
     <string name="logoname">CustDigit</string>
+    <string name="modifierViewTitre">Modifier Client</string>
+    <string name="btnMod">Valider</string>
 
 </resources>

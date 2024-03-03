@@ -62,7 +62,18 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         }
         return client;
     }
-
+    public Client getClientByMail(String email)
+    {
+        Client client=null;
+        SQLiteDatabase db = this.getReadableDatabase();
+        String pass;
+        Cursor cursor = db.query(TABLE,new String[] {COLUMN1, COLUMN2, COLUMN3},"email=? ",new String[] {email},null,null,null);
+        if(cursor.moveToFirst())
+        {
+            client = new Client(cursor.getString(0),cursor.getString(1), cursor.getString(2));
+        }
+        return client;
+    }
     public ArrayList<Client> getClients()
     {
         Client client;
@@ -101,7 +112,16 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         return res;
     }
 
-
+    public long modifierClient(Client client)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues content = new ContentValues();
+        content.put(COLUMN1, client.getNom());
+        content.put(COLUMN2, client.getEmail());
+        content.put(COLUMN3, client.getMotPasse());
+        long res = db.update(TABLE, content,"email=?",new String[] {client.getEmail()});
+        return res;
+    }
 
 
 

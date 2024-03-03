@@ -155,6 +155,20 @@ public class afficherClients extends AppCompatActivity {
             clientContainer.addView(tvmail);
 
             containerClient.addView(clientContainer,params);
+
+            //Ajouter événement info client layout
+            clientContainer.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    Client cl = db.getClientByMail(deleteIcon.getTooltipText().toString());
+                    Intent intent = new Intent(afficherClients.this, modifierClient.class);
+                    intent.putExtra("nom",cl.getNom());
+                    intent.putExtra("email",cl.getEmail());
+                    intent.putExtra("motPasse",cl.getMotPasse());
+                    startActivity(intent);
+                    return true;
+                }
+            });
         }
     }
     //Fonctions drawer menu
