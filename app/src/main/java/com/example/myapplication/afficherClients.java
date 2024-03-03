@@ -86,7 +86,7 @@ public class afficherClients extends AppCompatActivity {
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             params.setMargins(0, 10, 0, 20);
             clientContainer.setOrientation(LinearLayout.VERTICAL);
-            clientContainer.setBackgroundColor(Color.rgb(197,183,214));
+            clientContainer.setBackgroundColor(Color.rgb(53,24,90));
             clientContainer.setPadding(60,50, 0 ,60);
             clientContainer.setTop(20);
 
@@ -115,6 +115,7 @@ public class afficherClients extends AppCompatActivity {
             TextView tvnom = new TextView(this);
             tvnom.setText(cl.getNom());
             tvnom.setTextSize(20);
+            tvnom.setTextColor(Color.WHITE);
             tvnom.setLayoutParams(paramstvNom);
             tvnom.setPadding(60,10, 0 ,0);
 
@@ -123,6 +124,7 @@ public class afficherClients extends AppCompatActivity {
             TextView tvmail = new TextView(this);
             tvmail.setText(cl.getEmail());
             tvmail.setTextSize(20);
+            tvmail.setTextColor(Color.WHITE);
             tvmail.setPadding(60,10, 0 ,0);
 
             myContainer.addView(tvnom);
