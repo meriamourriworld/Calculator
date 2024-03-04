@@ -28,7 +28,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "gestionUtilisateurs.db";
     private static final String TABLE = "client";
-    private final String COLUMN1 = "nom", COLUMN2 = "email", COLUMN3 = "motPasse";
+    private final String COLUMN0 = "idClient", COLUMN1 = "nom", COLUMN2 = "email", COLUMN3 = "motPasse";
     public DataBaseHandler(@Nullable Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
@@ -66,11 +66,10 @@ public class DataBaseHandler extends SQLiteOpenHelper {
     {
         Client client=null;
         SQLiteDatabase db = this.getReadableDatabase();
-        String pass;
-        Cursor cursor = db.query(TABLE,new String[] {COLUMN1, COLUMN2, COLUMN3},"email=? ",new String[] {email},null,null,null);
+        Cursor cursor = db.query(TABLE,new String[] {COLUMN0,COLUMN1, COLUMN2, COLUMN3},"email=? ",new String[] {email},null,null,null);
         if(cursor.moveToFirst())
         {
-            client = new Client(cursor.getString(0),cursor.getString(1), cursor.getString(2));
+            client = new Client(cursor.getInt(0),cursor.getString(1), cursor.getString(2),cursor.getString(3));
         }
         return client;
     }
@@ -119,7 +118,7 @@ public class DataBaseHandler extends SQLiteOpenHelper {
         content.put(COLUMN1, client.getNom());
         content.put(COLUMN2, client.getEmail());
         content.put(COLUMN3, client.getMotPasse());
-        long res = db.update(TABLE, content,"email=?",new String[] {client.getEmail()});
+        long res = db.update(TABLE, content,"idClient=?",new String[] {String.valueOf(client.getIdClient())});
         return res;
     }
 

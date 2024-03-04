@@ -7,6 +7,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,7 +36,7 @@ public class modifierClient extends AppCompatActivity {
         btnModifier = findViewById(R.id.btnModifier);
 
         //Récupérer les composants Menu
-        mainDrawerMod = findViewById(R.id.mainDrawer);
+        mainDrawerMod = findViewById(R.id.mainDrawerMod);
         mainMenuMod = findViewById(R.id.mainMenu);
         menuLogOutMod = findViewById(R.id.menuLogout);
         menuCalcMod = findViewById(R.id.menuCalculatrice);
@@ -46,6 +47,7 @@ public class modifierClient extends AppCompatActivity {
 
         //Chargement des info Client
         Intent intent = getIntent();
+        edModNom.setTooltipText(intent.getStringExtra("idClient"));
         edModNom.setText(intent.getStringExtra("nom"));
         edModMail.setText(intent.getStringExtra("email"));
         edModMp.setText(intent.getStringExtra("motPasse"));
@@ -60,11 +62,12 @@ public class modifierClient extends AppCompatActivity {
 
                 if(msg.equals(""))
                 {
-                    res=db.modifierClient(new Client(edModNom.getText().toString(), edModMail.getText().toString(), edModMp.getText().toString()));
+                    res=db.modifierClient(new Client(Integer.parseInt(edModNom.getTooltipText().toString()),edModNom.getText().toString(), edModMail.getText().toString(), edModMp.getText().toString()));
                     if(res != -1)
                     {
                         Toast.makeText( modifierClient.this, "Le compte a été Modifié avec succès !", Toast.LENGTH_LONG).show();
                         redirectActivity(modifierClient.this, afficherClients.class);
+                        finish();
                     }else
                     {
                         Toast.makeText( modifierClient.this, "Erreur Lors de la modification de compte !", Toast.LENGTH_LONG).show();

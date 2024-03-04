@@ -165,6 +165,7 @@ public class afficherClients extends AppCompatActivity {
                     intent.putExtra("nom",cl.getNom());
                     intent.putExtra("email",cl.getEmail());
                     intent.putExtra("motPasse",cl.getMotPasse());
+                    intent.putExtra("idClient",String.valueOf(cl.getIdClient()));
                     startActivity(intent);
                     return true;
                 }

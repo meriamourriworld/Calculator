@@ -6,11 +6,22 @@ public class Client {
     private String email;
     private String motPasse;
 
+    public Client(int idClient, String nom, String email, String motPasse) {
+        this.idClient = idClient;
+        this.nom = nom;
+        this.email = email;
+        this.motPasse = motPasse;
+    }
+
     public Client(String nom, String email, String motPasse)
     {
         this.nom = nom;
         this.email = email;
         this.motPasse = motPasse;
+    }
+
+    public int getIdClient() {
+        return idClient;
     }
 
     public String getNom() {
