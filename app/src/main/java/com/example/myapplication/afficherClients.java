@@ -78,7 +78,6 @@ public class afficherClients extends AppCompatActivity {
         DataBaseHandler db = new DataBaseHandler(this);
         //Récupérer les clients depuis la Base de données
         ArrayList<Client> lsClients = new ArrayList<Client>(db.getClients());
-        Log.d("SIZE", String.valueOf(lsClients.size()));
         containerClient.removeAllViews();
         for(Client cl : lsClients)
         {
